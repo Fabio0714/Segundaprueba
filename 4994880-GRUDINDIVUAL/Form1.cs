@@ -24,7 +24,7 @@ namespace _4994880_GRUDINDIVUAL
 		System.Data.OleDb.OleDbConnection conBD = new System.Data.OleDb.OleDbConnection();
 		String sAction = "";
 
-		public void AbrirConexion()
+		public void OpenConnection()
 		{
 			//Abrir la conexion con la base de datos y mostrar si hay fallo en ello 
 			conBD.ConnectionString = @"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = C:\Users\MINEDUCYT\Desktop\PRACTICA 3\WindowsFomandAccess\Empresa.accdb";
@@ -35,10 +35,11 @@ namespace _4994880_GRUDINDIVUAL
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show ("Error de conexion" + ex);
+				MessageBox.Show("Error de conexion" + ex);
 			}
+		}
 
-		public void CerrarConexion()
+		public void CloseConnection()
 		{
 			//Se chequea si la conexion esta habilitada y luego la cierra
 			if (conBD.State == ConnectionState.Open)
@@ -80,7 +81,7 @@ namespace _4994880_GRUDINDIVUAL
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			AbrirConexion();
+			OpenConnection();
 		}
 
 
@@ -117,7 +118,7 @@ namespace _4994880_GRUDINDIVUAL
 		private void btnSalir_Click(object sender, EventArgs e)
 		{
 			//S edebe cerrar la conexion
-			CerrarConexion();
+			CloseConnection();
 
 			//Se cierra el programa
 			this.Close();
